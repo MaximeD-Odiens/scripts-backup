@@ -22,3 +22,22 @@ function (){
   var date = date.toUTCString(); // Converts milliseconds to UTC time string
   document.cookie = cookieName+"="+cookieValue+"; SameSite=None; Secure; path=/; domain=." + location.hostname.replace(/^www\./i, ""); // Sets cookie for all subdomains
 </script>
+
+<!-- Modify cookie _ga expiration to 13 months -->
+<script>
+  function(){
+    try {
+      var ga = {{Cookie - _ga}};
+      var ga_create= (Number(ga.split(".").pop()))*1000;
+      var sec_expire = 60*60*24*30*13*1000;
+      var t = new Date().getTime();
+      var t0 = new Date(ga_create).getTime();
+      var t1 = t0 + sec_expire;
+      var t_diff = Math.round((t1-t)/1000);
+      return t_diff;
+    } catch(e){
+      return sec_expire/1000;
+      console.log(e);
+    }
+  }
+</script>
