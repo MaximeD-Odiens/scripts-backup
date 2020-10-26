@@ -1,0 +1,382 @@
+<!-- Impression de produits (au chargement de la page) -->
+<script>
+dataLayer.push({
+	'event': 'impressions', 
+	'eventCategory': 'Ecommerce', 
+	'eventAction': 'Impression',
+	'eventLabel': '%pageURL',
+	'ecommerce': {
+		'currencyCode': 'EUR',                       
+		'impressions': [
+		{
+			'name': '%productName',			// %productName ou %productID est requis.
+			'id': '%productID',
+			'price': '%productPrice',
+			'brand': '%productBrand',
+			'category': '%productCategory',
+			'variant': '%productVariant',
+			'list': '%productList',
+			'position': 1
+		},
+		{
+			'name': '%productName',
+			'id': '%productID',
+			'price': '%productPrice',
+			'brand': '%productBrand',
+			'category': '%productCategory',
+			'variant': '%productVariant',
+			'list': '%productList',
+			'position': 2
+		}]
+	}
+});
+</script>
+
+<!-- Clic sur un produit -->
+<script>
+dataLayer.push({
+	'event': 'productClick',
+	'eventCategory': 'Ecommerce',
+	'eventAction': 'Clic',
+	'eventLabel': '%productName',
+	'ecommerce': {
+		'click': {
+			'actionField': {'list': '%productList'},    // champ list optionnel
+			'products': [{
+				'name': '%productName',					// %productName ou %productID est requis.
+				'id': '%productID',
+				'price': '%productPrice',
+				'brand': '%productBrand',
+				'category': '%productCategory',
+				'variant': '%productVariant',
+				'position': 1
+			}]
+		}
+	},
+});
+</script>
+
+<!-- Impression d'une page produit (au chargement de la page) -->
+<script>
+dataLayer.push({
+	'event': 'details',
+	'eventCategory': 'Ecommerce',
+	'eventAction': 'Product Detail',
+	'eventLabel': '%productName',
+	'ecommerce': {
+		'detail': {
+			'actionField': {'list': '%productList'},	// 'detail' actions have an optional list property.
+			'products': [{
+				'name': '%productName',         		// %productName ou %productID est requis.
+				'id': '%productID',
+				'price': '%productPrice',
+				'brand': '%productBrand',
+				'category': '%productCategory',
+				'variant': '%productVariant'
+			}]
+		}
+	}
+});
+</script>
+
+<!-- Ajout au panier -->
+<script>
+dataLayer.push({
+	'event': 'addToCart',
+	'eventCategory': 'Ecommerce',
+	'eventAction': 'Add To Cart',
+	'eventLabel': '%productName',
+	'ecommerce': {
+		'currencyCode': 'EUR',
+		'add': {                                
+			'products': [{                       
+				'name': '%productName',        		// %productName ou %productID est requis.
+				'id': '%productID',
+				'price': '%productPrice',
+				'brand': '%productBrand',
+				'category': '%productCategory',
+				'variant': '%productVariant',
+				'quantity': %productQuantity
+			}]
+		}
+	}
+});
+</script>
+
+<!-- Suppression du panier -->
+<script>
+dataLayer.push({
+	'event': 'removeFromCart',
+	'eventCategory': 'Ecommerce',
+	'eventAction': 'Remove From Cart',
+	'eventLabel': '%productName',
+	'ecommerce': {
+		'remove': {                               
+			'products': [{                          
+				'name': '%productName',         // %productName ou %productID est requis.
+				'id': '%productID',
+				'price': '%productPrice',
+				'brand': '%productBrand',
+				'category': '%productCategory',
+				'variant': '%productVariant',
+				'quantity': %productQuantity
+			}]
+		}
+	}
+});
+</script>
+
+<!-- Impression de promotion(s) (bannière, etc. ; au chargement de la page) -->
+<script>
+dataLayer.push({
+	'event':'promotionImpressions',
+	'eventCategory': 'Ecommerce',
+	'eventAction': 'Impression Promotion',
+	'eventLabel': '%pageURL',
+	'ecommerce': {
+		'promoView': {
+			'promotions': [                     	// Array of promoFieldObjects.
+			{
+				'id': '%promotionID',            	// %productName ou %productID est requis.
+				'name': '%promotionName',
+				'creative': '%promotionBanner',
+				'position': '%promotionPosition'
+			},
+			{
+				'id': '%promotionID',            	// %productName ou %productID est requis.
+				'name': '%promotionName',
+				'creative': '%promotionBanner',
+				'position': '%promotionPosition'
+			}]
+		}
+	}
+});
+</script>
+
+<!-- Clic sur une promotion -->
+<script>
+dataLayer.push({
+	'event': 'promotionClick',
+	'eventCategory': 'Ecommerce',
+	'eventAction': 'Clic Promotion',
+	'eventLabel': '%productName',
+	'ecommerce': {
+		'promoClick': {
+			'promotions': [
+			{
+				'id': '%promotionID',				// %productName ou %productID est requis.
+				'name': '%promotionName',
+				'creative': '%promotionBanner',
+				'position': '%promotionPosition'
+			}]
+		}
+	},
+});
+</script>
+
+<!-- Impression page panier (step 1 tunnel de commande, au chargement de la page) -->
+<script>
+dataLayer.push({
+	'event': 'checkout',
+	'eventCategory': 'Ecommerce',
+	'eventAction': 'Checkout',
+	'eventLabel': 'Cart',
+	'ecommerce': {
+		'checkout': {
+			'actionField': {'step': 1, 'option': 'Visa'}, // le champ option est optionnel, par exemple pour indiquer le type de paiment utilisé
+			'products': [{
+				'name': '%productName',
+				'id': '%productID',
+				'price': '%productPrice',
+				'brand': '%productBrand',
+				'category': '%productCategory',
+				'variant': '%productVariant',
+				'quantity': %productQuantity
+			},
+			{
+				'name': '%productName',
+				'id': '%productID',
+				'price': '%productPrice',
+				'brand': '%productBrand',
+				'category': '%productCategory',
+				'variant': '%productVariant',
+				'quantity': %productQuantity
+			}]
+		}
+	},		
+});
+</script>
+
+<!-- Impression page authentification (step 2 tunnel de commande, au chargement de la page) -->
+<script>
+dataLayer.push({
+	'event': 'checkout',
+	'eventCategory': 'Ecommerce',
+	'eventAction': 'Checkout',
+	'eventLabel': 'Authentification',
+	'ecommerce': {
+		'checkout': {
+			'actionField': {'step': 2, 'option': 'Visa'}, // le champ option est optionnel, par exemple pour indiquer le type de paiment utilisé
+			'products': [{
+				'name': '%productName',
+				'id': '%productID',
+				'price': '%productPrice',
+				'brand': '%productBrand',
+				'category': '%productCategory',
+				'variant': '%productVariant',
+				'quantity': %productQuantity
+			},
+			{
+				'name': '%productName',
+				'id': '%productID',
+				'price': '%productPrice',
+				'brand': '%productBrand',
+				'category': '%productCategory',
+				'variant': '%productVariant',
+				'quantity': %productQuantity
+			}]
+		}
+	},		
+});
+</script>
+
+<!-- Impression page livraison-paiement (step 3 tunnel de commande, au chargement de la page) -->
+<script>
+dataLayer.push({
+	'event': 'checkout',
+	'eventCategory': 'Ecommerce',
+	'eventAction': 'Checkout',
+	'eventLabel': 'Livraison-Paiement',
+	'ecommerce': {
+		'checkout': {
+			'actionField': {'step': 3, 'option': 'Visa'}, // le champ option est optionnel, par exemple pour indiquer le type de paiment utilisé
+			'products': [{
+				'name': '%productName',
+				'id': '%productID',
+				'price': '%productPrice',
+				'brand': '%productBrand',
+				'category': '%productCategory',
+				'variant': '%productVariant',
+				'quantity': %productQuantity
+			},
+			{
+				'name': '%productName',
+				'id': '%productID',
+				'price': '%productPrice',
+				'brand': '%productBrand',
+				'category': '%productCategory',
+				'variant': '%productVariant',
+				'quantity': %productQuantity
+			}]
+		}
+	},	
+});
+</script>
+
+<!-- Impression page récapitulatif de commande (step 4 tunnel de commande, au chargement de la page) -->
+<script>
+dataLayer.push({
+	'event': 'checkout',
+	'eventCategory': 'Ecommerce',
+	'eventAction': 'Checkout',
+	'eventLabel': 'Recapitulatif',
+	'ecommerce': {
+		'checkout': {
+			'actionField': {'step': 4, 'option': 'Visa'}, // le champ option est optionnel, par exemple pour indiquer le type de paiment utilisé
+			'products': [{
+				'name': '%productName',
+				'id': '%productID',
+				'price': '%productPrice',
+				'brand': '%productBrand',
+				'category': '%productCategory',
+				'variant': '%productVariant',
+				'quantity': %productQuantity
+			},
+			{
+				'name': '%productName',
+				'id': '%productID',
+				'price': '%productPrice',
+				'brand': '%productBrand',
+				'category': '%productCategory',
+				'variant': '%productVariant',
+				'quantity': %productQuantity
+			}]
+		}
+	},	
+});
+</script>
+
+<!-- Confirmation d'achat (au chargement de la page) -->
+<script>
+dataLayer.push({
+	'event': 'purchase',
+	'eventCategory': 'Ecommerce',
+	'eventAction': 'Transaction',
+	'eventLabel': '%transactionID',
+	'ecommerce': {
+		'purchase': {
+			'actionField': {
+				'id': '%transactionID',               	 // %transactionID est requis.
+				'affiliation': '%affiliatePartner',
+				'revenue': '%transactionRevenue',      	// Total de la transaction (incluant tax et shipping)
+				'tax':'%transactionTax',
+				'shipping': '%transactionShipping',
+				'coupon': '%couponTransactionUsed'
+			},
+			'products': [{                          	// Liste de productFieldObjects.
+				'name': '%productName',					// %productName ou %productID est requis.	
+				'id': '%productID',
+				'price': '%productPrice',
+				'brand': '%productBrand',
+				'category': '%productCategory',
+				'variant': '%productVariant',
+				'quantity': %productQuantity,
+				'coupon': '%couponProductUsed'      	// Les champs optionnels peuvent être supprimés ou laissés vides.
+			},
+			{
+				'name': '%productName',
+				'id': '%productID',
+				'price': '%productPrice',
+				'brand': '%productBrand',
+				'category': '%productCategory',
+				'variant': '%productVariant',
+				'quantity': %productQuantity
+			}]
+		}
+	}
+});
+</script>
+
+<!-- Impression page remboursement d'une transaction (au chargement de la page) -->
+<script>
+dataLayer.push({
+	'event': 'refund',
+	'eventCategory': 'Ecommerce',
+	'eventAction': 'Refund',
+	'eventLabel': '%transactionID',
+	'ecommerce': {
+		'refund': {
+			'actionField': {'id': '%transactionID'}		// %transactionID est requis.
+		}
+	}
+});
+</script>
+
+<!-- Impression page remboursement partielle d'une transaction (au chargement de la page) -->
+<script>
+dataLayer.push({
+	'event': 'refund',
+	'eventCategory': 'Ecommerce',
+	'eventAction': 'Refund',
+	'eventLabel': '%transactionID',
+	'ecommerce': {
+		'refund': {
+			'actionField': {'id': '%transactionID'},       				// %transactionID est requis.
+			'products': [
+				{'id': '%productID', 'quantity': %productQuantity},  	// %productID et %productQuantity sont requis.
+				{'id': '%productID','quantity': %productQuantity}
+			]
+		}
+	}
+});
+</script>
