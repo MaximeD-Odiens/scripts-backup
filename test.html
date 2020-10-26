@@ -68,3 +68,11 @@ function() {
   return vals.length ? vals.join(' ') : undefined;
 } 
 </script>
+
+<!-- capture field value of a form -->
+<script>
+function() {
+  var field = {{Form Element}}.querySelector('#field55id');
+  return field ? field.value : undefined;
+}
+</script>
