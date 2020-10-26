@@ -54,3 +54,17 @@ function (){
     }
   }
 </script>
+
+<!-- capture checked-box fields of a form, source : https://www.simoahava.com/analytics/track-form-engagement-with-google-tag-manager/ -->
+<script>
+function() {
+  var groupName = "field151[]";
+  var elems = document.querySelectorAll('[name="' + groupName + '"]:checked');
+  var vals = [];
+  var i, len;
+  for (i = 0, len = elems.length; i < len; i++) {
+    vals.push(elems[i].value);
+  }
+  return vals.length ? vals.join(' ') : undefined;
+} 
+</script>
