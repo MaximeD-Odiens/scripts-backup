@@ -1,0 +1,4 @@
+******
+match a homepage (domain name extension with 2 or 3 characters) :
+https?://[www\.]?.*\.[a-z]{2,3}\/
+******
